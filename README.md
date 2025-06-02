@@ -13,7 +13,7 @@ A web-based application for managing library books, user authentication, and bor
 - Simple, responsive web interface
 
 ## Usage
-- Register a new user or log in with existing credentials (you can check the db file.)
+- Register a new user or log in with existing credentials (you can check the sample db file.)
 - Add, edit, or delete books and manage borrowings (as librarian).
 - Borrow and return books and view your borrowing history  (as student).
   
