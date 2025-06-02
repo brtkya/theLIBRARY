@@ -12,10 +12,10 @@ A web-based application for managing library books, user authentication, and bor
 - Export borrowed or overdue books as XML
 - Simple, responsive web interface
 
-## What Can You Do?
+## Usage
 - Register a new user or log in with existing credentials (you can check the db file.)
 - Add, edit, or delete books and manage borrowings (as librarian).
 - Borrow and return books and view your borrowing history  (as student).
   
 ## Additional Information
-While designed for library management, this application can be adapted for other inventory and lending scenarios. It features a modular structure, making it easy to extend with new features or integrate with other systems. The system uses SQLite by default but can be configured for other databases.
+While designed for library management, this application can be adapted for other inventory and lending scenarios. It features a modular structure, making it easy to extend with new features or integrate with other systems. The system uses SQLite by default but can be configured for other databases. You can you this app freely for your school projects.
