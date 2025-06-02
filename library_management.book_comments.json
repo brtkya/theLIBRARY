@@ -1,0 +1,88 @@
+[{
+  "_id": {
+    "$oid": "682f6c441b921de7ebc76aeb"
+  },
+  "book_id": 9,
+  "student_email": "beratkaya@gmail.com",
+  "student_name": "berat",
+  "comment": "bad",
+  "rating": 4,
+  "date": "2025-05-23 01:02"
+},
+{
+  "_id": {
+    "$oid": "682f6cee85edebabf0d530ef"
+  },
+  "book_id": 3,
+  "student_email": "beratkaya@gmail.com",
+  "student_name": "berat",
+  "comment": "meh",
+  "rating": 5,
+  "date": "2025-05-22 21:53"
+},
+{
+  "_id": {
+    "$oid": "682f6f286a5c734a7506626f"
+  },
+  "book_id": 16,
+  "student_email": "beratkaya@gmail.com",
+  "student_name": "berat",
+  "comment": "good",
+  "rating": 5,
+  "date": null
+},
+{
+  "_id": {
+    "$oid": "682f7021292d60aeb26c55f3"
+  },
+  "book_id": 11,
+  "student_email": "beratkaya@gmail.com",
+  "student_name": "berat",
+  "comment": "good",
+  "rating": 5,
+  "date": null
+},
+{
+  "_id": {
+    "$oid": "682f7957f7f64ada0e2a7997"
+  },
+  "book_id": 25,
+  "student_email": "beratkaya@gmail.com",
+  "student_name": "berat",
+  "comment": "it is nice",
+  "rating": 5,
+  "date": "2025-05-22 22:21"
+},
+{
+  "_id": {
+    "$oid": "682fa45f1134a00072a78467"
+  },
+  "book_id": 14,
+  "student_email": "beratkaya@gmail.com",
+  "student_name": "berat",
+  "comment": "one of the best books ever",
+  "rating": 5,
+  "date": "2025-05-23 01:25"
+},
+{
+  "_id": {
+    "$oid": "682faaf7d82e3ec6e594a69d"
+  },
+  "book_id": 14,
+  "student_email": "ayberk@gmail.com",
+  "student_name": "ayberk",
+  "comment": "nice\n",
+  "rating": 4,
+  "date": "2025-05-23 01:53"
+},
+{
+  "_id": {
+    "$oid": "6830d982c03fc072750d0c91"
+  },
+  "book_id": 14,
+  "student_email": "merve@gmail.com",
+  "student_name": "merve",
+  "comment": "i dont know how to read",
+  "rating": 1,
+  "date": "2025-05-23 23:24"
+}]

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home - theLIBRARY</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+    .navbar {
+      background-color: #1e1e1e;
+      padding: 15px 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .brand-header {
+      font-size: 32px;
+      font-weight: 600;
+      color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .brand-header span {
+      color: #007bff;
+    }
+    .container {
+      max-width: 1400px;
+      margin-top: 20px;
+      padding: 0 15px;
+    }
+    .book-card {
+      background-color: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 14px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: calc(20% - 32px);
+      min-height: 205px;
+      max-height: 205px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .book-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+    }
+    .book-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #66b2ff;
+      margin-bottom: 10px;
+    }
+    .book-author {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+    .book-meta {
+      font-size: 13px;
+      color: #888;
+      margin-top: auto;
+    }
+    .logout-btn {
+      background-color: transparent;
+      border: 1px solid #007bff;
+      color: #007bff;
+      padding: 8px 20px;
+      border-radius: 5px;
+      transition: all 0.3s;
+      margin-left: auto;
+      text-decoration: none;
+    }
+    .logout-btn:hover {
+      background-color: #007bff;
+      color: white;
+    }
+    .game-card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 32px 32px;
+      margin: 0;
+    }
+    @media (max-width: 1200px) {
+      .book-card {
+        width: calc(25% - 32px);
+      }
+    }
+    @media (max-width: 992px) {
+      .book-card {
+        width: calc(33.333% - 32px);
+      }
+    }
+    @media (max-width: 768px) {
+      .book-card {
+        width: calc(50% - 32px);
+      }
+    }
+    @media (max-width: 576px) {
+      .book-card {
+        width: 100%;
+      }
+    }
+    #search-bulge {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 0px;
+    }
+    #search-bulge button {
+      background: #232c3b;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 6px 20px 0 rgba(0, 123, 255, 0.10);
+      width: 64px;
+      height: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      transition: box-shadow 0.2s;
+    }
+    #search-bulge button:hover {
+      box-shadow: 0 10px 28px 0 rgba(0, 123, 255, 0.18);
+    }
+    #search-bulge svg {
+      width: 28px;
+      height: 28px;
+    }
+    #search-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.35s cubic-bezier(.4, 0, .2, 1), margin 0.35s cubic-bezier(.4, 0, .2, 1);
+      background: #232323;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px 0 rgba(0, 123, 255, 0.10);
+      align-items: center;
+      padding: 0 18px; 
+      position: relative;
+      width: 100%;
+    }
+    #search-form.active {
+      height: 48px;
+      margin: 20px auto;
+    }
+    #search-form input {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 350px;
+      box-shadow: none;
+      padding: 12px 0;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .flash-container {
+      transition: max-height 0.7s cubic-bezier(.4,0,.2,1), padding 0.7s cubic-bezier(.4,0,.2,1);
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    .flash-container.show {
+      max-height: 80px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+    .flash-container.hide {
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+    .fadeout-alert {
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), margin 0.7s cubic-bezier(.4,0,.2,1);
+      opacity: 0;
+      margin-bottom: 0.5rem;
+      margin-left: 0;
+      margin-right: 0;
+      width: 100%;
+      max-width: 700px;
+      box-sizing: border-box;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      text-align: center;
+    }
+    .fadeout-alert.show {
+      opacity: 1;
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .fadeout-alert.hide {
+      opacity: 0;
+      margin-bottom: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-dark" style="position:relative;">
+    <a href="{{ url_for('books.home') }}" class="brand-header" style="text-decoration:none;">
+      📚 the<span>LIBRARY</span>
+    </a>
+    <div style="margin-left:auto; display:flex; gap:10px; align-items:center;">
+      {% if user_role == 'librarian' %}
+      <a href="{{ url_for('borrow.borrowings') }}" class="btn btn-outline-info logout-btn">Borrowings</a>
+      <a href="{{ url_for('books.add_book') }}" class="btn btn-outline-primary logout-btn">Add Book</a>
+      {% endif %}
+      {% if user_role == 'student' %}
+      <a href="{{ url_for('borrow.my_books') }}" class="btn btn-outline-info logout-btn">My Books</a>
+      {% endif %}
+      <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
+    </div>
+  </nav>
+
+  <div id="search-bulge">
+    <button id="search-toggle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#66b2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="container">
+    <form id="search-form" method="get" action="{{ url_for('books.home') }}">
+      <input type="text" name="search" class="form-control" placeholder="Search books by title..." value="{{ search_query|default('') }}">
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="container mt-3 flash-container" id="flashDrawer" style="padding-left:0; padding-right:0; max-width: 700px;">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} fadeout-alert" role="alert" style="margin-left:0; margin-right:0; padding: 0.5rem 1rem; font-size: 1rem; text-align: center;">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div id="search-results">
+      <div class="game-card-container">
+        {% for book in books %}
+        <a href="{{ url_for('books.book_detail', book_id=book.Book_ID) }}" class="book-card" style="text-decoration: none; color: inherit;">
+          <div class="book-title">{{ book.Title }}</div>
+          <div class="book-author">by {{ book.Author }}</div>
+          <div class="book-meta">
+            Genre: {{ book.Genre }}<br>
+            Publisher: {{ book.Publisher }}<br>
+            Copies Available: {% if book.Copies_Available == 0 %}<span style="color: #ff4d4f; font-weight: bold;">{{ book.Copies_Available }}</span>{% else %}<span style="color: #888; font-weight: bold;">{{ book.Copies_Available }}</span>{% endif %}
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      {% if books|length == 0 %}
+        <div class="text-center mt-5" style="color:#aaa; font-size:1.2rem;">No books found.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <script>
+    const searchToggle = document.getElementById('search-toggle');
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.querySelector('input[name="search"]');
+    let searchOpen = false;
+
+    searchToggle.addEventListener('click', function() {
+      searchOpen = !searchOpen;
+      if (searchOpen) {
+        searchForm.classList.add('active');
+        setTimeout(() => { searchInput.focus(); }, 200);
+      } else {
+        searchForm.classList.remove('active');
+      }
+    });
+
+ 
+    let debounceTimeout;
+    const resultsContainer = document.getElementById('search-results');
+    
+    searchInput.addEventListener('input', function() {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        const query = searchInput.value.trim();
+        fetch(`{{ url_for('books.home') }}?search=${encodeURIComponent(query)}`)
+          .then(response => response.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newResults = doc.getElementById('search-results');
+            if (newResults) {
+              resultsContainer.innerHTML = newResults.innerHTML;
+            }
+          });
+      }, 200);
+    });
+
+  
+    window.addEventListener('DOMContentLoaded', function() {
+      if (searchInput.value.trim()) {
+        searchOpen = true;
+        searchForm.classList.add('active');
+        const event = new Event('input');
+        searchInput.dispatchEvent(event);
+      }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        var drawer = document.getElementById('flashDrawer');
+        if(drawer) drawer.classList.add('show');
+        document.querySelectorAll('.fadeout-alert').forEach(function(alert) {
+          alert.classList.add('show');
+        });
+      }, 50); 
+      setTimeout(function() {
+        var drawer = document.getElementById('flashDrawer');
+        if(drawer) drawer.classList.remove('show');
+        document.querySelectorAll('.fadeout-alert').forEach(function(alert) {
+          alert.classList.remove('show');
+          alert.classList.add('hide');
+        });
+      }, 3050); 
+    });
+  </script>
+</body>
+</html>
