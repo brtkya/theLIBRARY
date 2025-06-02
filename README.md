@@ -19,3 +19,6 @@ A web-based application for managing library books, user authentication, and bor
   
 ## Additional Information
 While designed for library management, this application can be adapted for other inventory and lending scenarios. It features a modular structure, making it easy to extend with new features or integrate with other systems. The system uses SQLite by default but can be configured for other databases. You can you this app freely for your school projects.
+
+## Preview
+[Watch the demo video on YouTube](https://www.youtube.com/watch?v=gdmLngNlVDk)
