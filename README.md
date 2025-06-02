@@ -1,4 +1,4 @@
-# Library Management System
+# theLIBRARY
 
 ## General Information
 A web-based application for managing library books, user authentication, and borrowing records. Built with Flask, this system allows librarians and users to efficiently handle book inventories, track borrowing activity, and manage user accounts.
